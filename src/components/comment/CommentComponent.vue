@@ -1,4 +1,8 @@
 <template>
+    <form @submit.prevent="createComment">
+        <input type="text" placeholder="text 입력" />
+        <button @keyup.enter="createComment">제출</button>
+    </form>
     <div class="frame">
         <div class="profile_image"></div>
         <div class="content">
@@ -7,15 +11,33 @@
             <div style="font-size: 15px">당신의 댓글을 적어주세요.</div>
             <div style="font-size: 10px; font-weight: 300">답글달기</div>
         </div>
-        <div>
+        <div style="width: 15%">
             <img src="../../assets/heart.png" style="width: 20px" />
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    name: 'CommentCmp',
+    name: 'CommentComponent',
+    methods: {
+        createComment() {
+            const url = 'http://localhost:8080/api/comment';
+            const token = '';
+
+            const data={
+                "boardId":1,
+                "content":"testComment"
+            }
+            axios.post(url,data,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        },
+    },
 };
 </script>
 
