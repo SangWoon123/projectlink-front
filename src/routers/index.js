@@ -1,5 +1,5 @@
 import BoardPage from '@/components/board/BoardPage.vue';
-import CommentComponent from '@/components/comment/CommentComponent.vue';
+import CommentComponent from '@/components/comment/CommentList.vue';
 import { createWebHashHistory, createRouter } from 'vue-router';
 
 const routes = [
